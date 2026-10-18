@@ -1,0 +1,22 @@
+# Entornos virtuales
+venv/
+.env/
+env/
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Datos y datasets pesados (no van a GitHub)
+data/*.csv
+data/*.parquet
+data/*.xlsx
+
+# MLflow local
+mlruns/
+.trash/
+
+# Archivos de sistema / IDE
+.vscode/
+.idea/
+.DS_Store
