@@ -1,5 +1,5 @@
 import os
-from pathlib import pathlib
+from pathlib import Path
 
 # Rutas del proyecto
 BASE_DIR = Path(__file__).resolve().parent.parent
