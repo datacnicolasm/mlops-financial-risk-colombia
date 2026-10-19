@@ -2,6 +2,7 @@
 venv/
 .env/
 env/
+.env
 
 # Caché de Python
 __pycache__/
@@ -9,9 +10,12 @@ __pycache__/
 notebooks/.ipynb_checkpoints/
 
 # Datos y datasets pesados (no van a GitHub)
-data/
+data/raw/
+data/processed/*.parquet
+data/processed/*.csv
 
 # MLflow local
+mlflow.db
 mlruns/
 .trash/
 
