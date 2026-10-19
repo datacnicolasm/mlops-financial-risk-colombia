@@ -6,11 +6,10 @@ env/
 # Caché de Python
 __pycache__/
 *.pyc
+notebooks/.ipynb_checkpoints/
 
 # Datos y datasets pesados (no van a GitHub)
-data/*.csv
-data/*.parquet
-data/*.xlsx
+data/
 
 # MLflow local
 mlruns/
