@@ -15,8 +15,12 @@ async def lifespan(app: FastAPI):
     mlflow.set_tracking_uri(config.MLFLOW_TRACKING_URI)
     try:
         model_uri = f"models:/{config.MODEL_REGISTRY_NAME}@champion"
-        ml_components["model"] = mlflow.sklearn.load_model(model_uri)
+        
+        ml_components["model"] = mlflow.sklearn.load_model(
+            model_uri=model_uri
+        )
         ml_components["transformer"] = FinancialRatioTransformer()
+        
         ml_components["version"] = "champion"
         print("Modelo cargado exitosamente.")
     except Exception as e:
@@ -25,6 +29,7 @@ async def lifespan(app: FastAPI):
         ml_components["transformer"] = FinancialRatioTransformer()
         ml_components["version"] = "unloaded"
     yield
+    
     ml_components.clear()
 
 app = FastAPI(
@@ -36,7 +41,7 @@ app = FastAPI(
 
 @app.get("/health")
 def health_check():
-    status = "healthy" if ml_components.get("mode") is not None else "degraded"
+    status = "healthy" if ml_components.get("model") is not None else "degraded"
     return {"status": status, "model_version": ml_components.get("version")}
 
 @app.post("/predict", response_model=PredictionResponse)

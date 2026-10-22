@@ -15,4 +15,4 @@ class PredictionResponse(BaseModel):
     probabilidad_estres: float
     clasificacion_riesgo: int
     nivel_alerta: str
-    modelo_version: str
+    model_version: str

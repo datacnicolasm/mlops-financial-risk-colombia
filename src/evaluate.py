@@ -50,10 +50,9 @@ def evaluate_and_promote():
         client.create_registered_model(config.MODEL_REGISTRY_NAME)
 
     model_uri = f"runs:/{run_id}/model"
-    model_version = client.create_model_version(
-        name=config.MODEL_REGISTRY_NAME,
-        source=model_uri,
-        run_id=run_id
+    model_version = mlflow.register_model(
+        model_uri=model_uri,
+        name=config.MODEL_REGISTRY_NAME
     )
 
     # Asignar el alias
